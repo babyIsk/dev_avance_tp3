@@ -10,6 +10,7 @@ const configNumber = getConfigNumber()
 const typeMessage = getTypeMessage()
 const topic = getTopic()
 const debug = getDebug()
+const taille = process.env.NUMBER_WORD
 
 async function start() {
 
@@ -21,7 +22,7 @@ async function start() {
     setInterval(() => {
         const user = getUser()
         const message = typeMessage === "texte" ?
-            getStringMessage(3) :
+            getStringMessage(parseInt(taille)) :
             typeMessage === "nombre" ?
                 getNumberMessage(configNumber) :
                 "Config Error : choisir 'nombre' ou 'texte'"
